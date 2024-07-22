@@ -1,18 +1,15 @@
 def Dls(graph,StartNode,GoalNode,DepthLimit,visited):
-    if visited is None:
-        visited=set()
-    if StartNode==GoalNode:
-        return [StartNode]
-    visited.add(StartNode)
-    if DepthLimit<=0:
-        return None
-    for i in graph[StartNode]:
-        if i not in visited:
-            path=Dls(graph,i,GoalNode,DepthLimit-1,visited)
-            if path is not None:
-                return [StartNode]+path
-    return None             #If no path is found after exploring all neighbors
-
+    if DepthLimit>=0:
+        if StartNode==GoalNode:
+            print(StartNode)
+            return True
+        if StartNode not in visited:
+            print(StartNode,end=" ")
+            visited.add(StartNode)
+            for i in graph[StartNode]:
+                if Dls(graph,i,GoalNode,DepthLimit-1,visited):
+                    return True
+    return False
 
 V=int(input("Enter the number of nodes/vertices : "))
 E=int(input("Enter the number of edges : "))
@@ -28,9 +25,7 @@ for i in range(1,E+1):
 StartNode=input("Enter the starting node : ")
 GoalNode=input("Enter the goal node : ")
 DepthLimit=int(input("Enter the depth limit : "))
-visited=None
-result=Dls(graph,StartNode,GoalNode,DepthLimit,visited)
-if result is not None:
-    print("DLS traversal is :",result)
-else:
-    print("Path not found within depth limit.")
+visited=set()
+print("DLS traversal is : ",end="")
+if not Dls(graph,StartNode,GoalNode,DepthLimit,visited):
+     print(f"\nGoal node {GoalNode} not found within depth limit.")
