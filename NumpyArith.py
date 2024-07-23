@@ -1,0 +1,15 @@
+import numpy as np
+a1=np.array([[1,2,3],[4,5,6]])
+a2=np.array([[7,8,9],[10,11,12]])
+print(f"Array's : {a1} and {a2}")
+print(f"Addition : {np.add(a1,a2)}")
+print(f"Subtraction : {np.subtract(a1,a2)}")
+print(f"Multiplication : {np.multiply(a1,a2)}")
+print(f"Division : {np.divide(a1,a2)}")
+print(f"Dot product: {np.dot(a1,a2.T)}") #Transposing a2 for proper dot product
+print(f"Sine : {np.sin(a1)}")
+print(f"Cosine : {np.sin(a2)}")
+print(f"Tangent : {np.sin(a1)}")
+print(f"Sum of the elements : {np.sum(a1)}")
+print(f"Transpose : {np.transpose(a2)}")
+print(f"Power : {np.power(a1,5)}")
